@@ -1,3 +1,0 @@
-git add .github/workflows/generate_license_key.yml
-git commit -m "Add daily license key generation workflow"
-git push
