@@ -3,7 +3,7 @@ name: Daily License Key Generator
 on:
   schedule:
     # This will run daily at 1:15 PM UTC
-    - cron: '30 13 * * *'
+    - cron: '30 15 * * *'
 
 jobs:
   generate_key:
