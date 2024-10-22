@@ -2,8 +2,7 @@ name: Daily License Key Generator
 
 on:
   schedule:
-    # This will run daily at midnight UTC
-    - cron: '0 0 * * *'
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
 
 jobs:
   generate_key:
@@ -16,7 +15,6 @@ jobs:
       - name: Generate License Key
         id: generate_key
         run: |
-          # Create license key based on current date
           today=$(date +%Y%m%d)
           key=$(echo -n "KEY-$today-$RANDOM" | sha1sum | cut -c 1-16)
           echo "Generated License Key: $key"
@@ -25,7 +23,8 @@ jobs:
       - name: Save License Key to File
         run: |
           echo "${{ steps.generate_key.outputs.license_key }}" > license_key.txt
-          
+          echo "License Key saved to file."
+
       - name: Commit and Push License Key
         run: |
           git config --local user.email "action@github.com"
